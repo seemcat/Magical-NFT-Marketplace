@@ -28,6 +28,11 @@ function MyApp({ Component, pageProps }) {
               Dashboard
             </a>
           </Link>
+          <Link href="/logout">
+            <a className="mr-6 text-pink-500">
+            Logout
+            </a>
+          </Link>
         </div>
       </nav>
       <Component {...pageProps} />

@@ -1,36 +1,26 @@
 require("@nomiclabs/hardhat-waffle");
-const fs = require('fs');
-// const infuraId = fs.readFileSync(".infuraid").toString().trim() || "";
+const fs = require("fs");
+const GOERLI_PRIVATE_KEY = process.env.NEXT_PUBLIC_GOERLI_PRIVATE_KEY;
+const ALCHEMY_API_KEY = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY;
 
 module.exports = {
   defaultNetwork: "hardhat",
   networks: {
     hardhat: {
-      chainId: 1337
+      chainId: 1337,
     },
-    /*
-    mumbai: {
-      // Infura
-      // url: `https://polygon-mumbai.infura.io/v3/${infuraId}`
-      url: "https://rpc-mumbai.matic.today",
-      accounts: [process.env.privateKey]
+    goerli: {
+      url: `https://eth-goerli.alchemyapi.io/v2/${ALCHEMY_API_KEY}`,
+      accounts: [GOERLI_PRIVATE_KEY],
     },
-    matic: {
-      // Infura
-      // url: `https://polygon-mainnet.infura.io/v3/${infuraId}`,
-      url: "https://rpc-mainnet.maticvigil.com",
-      accounts: [process.env.privateKey]
-    }
-    */
   },
   solidity: {
     version: "0.8.4",
     settings: {
       optimizer: {
         enabled: true,
-        runs: 200
-      }
-    }
-  }
+        runs: 200,
+      },
+    },
+  },
 };
-
